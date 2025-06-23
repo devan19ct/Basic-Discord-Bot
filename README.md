@@ -28,8 +28,8 @@ This bot can respond to commands, send DMs, show user info, and more — and it'
 1. **Clone the repo:**
 
 ```bash
-git clone https://github.com/yourusername/havok-bot.git
-cd havok-bot
+git clone https://github.com/devan19ct/Basic-Discord-Bot.git
+cd Basic-Discord-Bot
 ```
 2. **Create a virtual environment (optional but recommended):**
 
@@ -75,7 +75,8 @@ python bot.py
 ## 🧠 Learning Goals
 
 This project is part of my Python learning journey.
-I’m building it step by step .
+I’m building it step by step
+
 ---
 
 ## 🤝 Contributing
