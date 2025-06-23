@@ -11,6 +11,8 @@ This bot can respond to commands, send DMs, show user info, and more — and it'
 - `!userinfo [@user]` – Displays user details like username, join date, and account age
 - `!dm @user [message]` – Sends a private message to a mentioned user
 - `!msg` – Sends a message to a specific user ID
+- `!settz [timezone]` - Sets the users timezone
+- `!at time` - Convert the input time to local time for each user
 - More features coming soon: Music, polls, reminders...
 
 ---
