@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 from dotenv import load_dotenv
 import os
 from datetime import datetime, timedelta
@@ -145,6 +146,18 @@ async def at(ctx, *args):
         await ctx.send("❌ Format: `!at 5:00 PM` or `!at tomorrow 5:00 PM` — and set your timezone first.")
 
 
+@bot.event
+async def on_ready():
+    print(f'✅ Logged in as {bot.user}')
+    try:
+        synced = await bot.tree.sync()
+        print(f"🔁 Synced {len(synced)} slash command(s).")
+    except Exception as e:
+        print(f"⚠️ Slash sync failed: {e}")
+
+@bot.tree.command(name="ping", description="Replies with Pong!")
+async def ping(interaction: discord.Interaction):
+    await interaction.response.send_message("🏓 Pong!")
 
 bot.run(TOKEN)
 
