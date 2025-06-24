@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 import pytz
 import json
 import os
+from slash_tracker import update_slash_usage, get_last_slash_usage
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
