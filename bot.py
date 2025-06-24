@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 import pytz
 import json
 import os
+from keep_alive import keep_alive
 from slash_tracker import update_slash_usage, get_last_slash_usage
 
 load_dotenv()
@@ -210,5 +211,6 @@ async def lastused(interaction: discord.Interaction):
     else:
         await interaction.response.send_message("⚠️ No slash command usage recorded yet.")
 
+keep_alive()
 bot.run(TOKEN)
 
