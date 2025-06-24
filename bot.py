@@ -163,5 +163,21 @@ async def ping(interaction: discord.Interaction):
 async def creator(interaction: discord.Interaction):
     await interaction.response.send_message("_mr_coffin created me as a Python learning project. Check it out on GitHub: https://github.com/devan19ct/Basic-Discord-Bot")
 
+@bot.tree.command(name="help", description="List all available commands")
+async def show_commands(interaction: discord.Interaction):
+    content = (
+        "**🤖 Available Commands:**\n\n"
+        "📨 `/ping` – Replies with Pong!\n"
+        "👤 `!userinfo` – Shows user info\n"
+        "📬 `!dm @user <msg>` – DM a user with a message\n"
+        "📥 `!msg` – Send a hardcoded DM to a specific user\n"
+        "🌍 `!settz <timezone>` – Set your timezone (e.g. IST, US/Eastern)\n"
+        "🕒 `!at <time>` – Convert time to everyone’s local time\n"
+        "👨‍💻 `/creator` – Info about the bot creator\n"
+        "📜 `/help` – You’re looking at it 😄"
+    )
+
+    await interaction.response.send_message(content)
+
 bot.run(TOKEN)
 
