@@ -50,10 +50,6 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.event
 async def on_ready():
     print(f'✅ Logged in as {bot.user}')
-
-@bot.event
-async def on_ready():
-    print(f'✅ Logged in as {bot.user}')
     bot.loop.create_task(monthly_reminder())
 
 async def monthly_reminder():
@@ -177,14 +173,17 @@ async def on_ready():
 
 @bot.tree.command(name="ping", description="Replies with Pong!")
 async def ping(interaction: discord.Interaction):
+    update_slash_usage()
     await interaction.response.send_message("🏓 Pong!")
 
 @bot.tree.command(name="creator", description="Replies with Coffin!")
 async def creator(interaction: discord.Interaction):
+    update_slash_usage()
     await interaction.response.send_message("_mr_coffin created me as a Python learning project. Check it out on GitHub: https://github.com/devan19ct/Basic-Discord-Bot")
 
 @bot.tree.command(name="help", description="List all available commands")
 async def show_commands(interaction: discord.Interaction):
+    update_slash_usage()
     content = (
         "**🤖 Available Commands:**\n\n"
         "📨 `/ping` – Replies with Pong!\n"
