@@ -197,5 +197,16 @@ async def show_commands(interaction: discord.Interaction):
 
     await interaction.response.send_message(content)
 
+@bot.tree.command(name="lastused", description="Shows when a slash command was last used.")
+async def lastused(interaction: discord.Interaction):
+    last = get_last_slash_usage()
+    if last:
+        days_ago = (datetime.utcnow() - last).days
+        await interaction.response.send_message(
+            f"📆 Last slash command used: `{last.strftime('%Y-%m-%d %H:%M:%S')} UTC` ({days_ago} days ago)"
+        )
+    else:
+        await interaction.response.send_message("⚠️ No slash command usage recorded yet.")
+
 bot.run(TOKEN)
 
