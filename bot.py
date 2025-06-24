@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 from dotenv import load_dotenv
 import os
+import asyncio
 from datetime import datetime, timedelta
 import pytz
 import json
@@ -47,6 +48,23 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.event
 async def on_ready():
     print(f'✅ Logged in as {bot.user}')
+
+@bot.event
+async def on_ready():
+    print(f'✅ Logged in as {bot.user}')
+    bot.loop.create_task(monthly_reminder())
+
+async def monthly_reminder():
+    notified = False
+    while True:
+        now = datetime.now(pytz.timezone("Asia/Kolkata"))
+        if now.day == 1 and not notified:
+            user = await bot.fetch_user(0) #YOUR_USER_ID_HERE
+            await user.send("📅 Hey! It's a new month. Run any `/command` to keep your Active Developer badge.")
+            notified = True
+        elif now.day != 1:
+            notified = False
+        await asyncio.sleep(3600)  # check every hour
 
 # Simple hello command
 @bot.command()
