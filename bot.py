@@ -4,7 +4,7 @@ from discord import app_commands
 from dotenv import load_dotenv
 import os
 import asyncio
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import pytz
 import json
 import os
@@ -202,9 +202,10 @@ async def show_commands(interaction: discord.Interaction):
 async def lastused(interaction: discord.Interaction):
     last = get_last_slash_usage()
     if last:
-        days_ago = (datetime.utcnow() - last).days
+        days_ago = (datetime.now(timezone.utc) - last).days
+        formatted_time = last.astimezone(pytz.timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S %Z')
         await interaction.response.send_message(
-            f"📆 Last slash command used: `{last.strftime('%Y-%m-%d %H:%M:%S')} UTC` ({days_ago} days ago)"
+            f"📆 Last slash command used: `{formatted_time}` ({days_ago} days ago)"
         )
     else:
         await interaction.response.send_message("⚠️ No slash command usage recorded yet.")

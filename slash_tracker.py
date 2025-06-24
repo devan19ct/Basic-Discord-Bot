@@ -1,12 +1,15 @@
 import os
 import json
 from datetime import datetime
+from pytz import timezone
 
 TRACKER_FILE = "slash_tracker.json"
 
 def update_slash_usage():
+    ist = timezone("Asia/Kolkata")
+    now_ist = datetime.now(ist)
     with open(TRACKER_FILE, "w") as f:
-        json.dump({"last_used": datetime.utcnow().isoformat()}, f)
+        json.dump({"last_used": now_ist.isoformat()}, f)
 
 def get_last_slash_usage():
     if not os.path.exists(TRACKER_FILE):
