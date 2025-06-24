@@ -159,5 +159,9 @@ async def on_ready():
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("🏓 Pong!")
 
+@bot.tree.command(name="creator", description="Replies with Coffin!")
+async def creator(interaction: discord.Interaction):
+    await interaction.response.send_message("_mr_coffin created me as a Python learning project. Check it out on GitHub: https://github.com/devan19ct/Basic-Discord-Bot")
+
 bot.run(TOKEN)
 
